@@ -13,4 +13,6 @@
 
 /*-------------------------------------------------------------------------------------------------------------------*/
 // Models
-#define CHEST_MODEL_LOCATION "res/models/chest.obj"
+#define TERRAIN_MODEL_LOCATION "res/models/terrain/terrain.obj"
+#define WALL_MODEL_LOCATION "res/models/wall/wall.obj"
+#define GUN_MODEL_LOCATION "res/models/gun/gun.obj"

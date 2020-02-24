@@ -1,5 +1,4 @@
-#ifndef PLAYER_H
-#define PLAYER_H
+#pragma once
 
 #include "State.h"
 #include "Camera.h"
@@ -25,6 +24,8 @@ class Player {
 		const glm::vec3 getPosition() { return camera.getPosition(); }
 
 	private:
+		Movement movement;
+
 		GLWindow& window;
 
 		bool w, a, s, d, space, lShift;
@@ -36,5 +37,3 @@ class Player {
 		GLfloat lastY = window.getWindow().getSize().y / 2.f;
 		bool firstMouse = true;
 };
-
-#endif

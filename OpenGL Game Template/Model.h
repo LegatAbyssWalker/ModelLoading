@@ -9,6 +9,8 @@
 
 #include "Mesh.h"
 #include "Program.h"
+#include "Variables.h"
+#include "State.h"
 
 #include <iostream>
 #include <string>
@@ -21,14 +23,16 @@ class Model {
 	public:
 		std::vector<Texture> textures_loaded;
 		std::vector<Mesh> meshes;
-		std::string directory;
 
+		std::string directory;
 		bool gamaCorrection;
 
-	public:
-		Model(std::string const& path, bool gamma= false);
 
-		void renderModel(Program& program);
+	public:
+		Model() = default;
+		Model(std::string const& modelPath, GLWindow& window, bool gamma = false);
+
+		void renderModel(std::unique_ptr<Program>& program);
 
 	private:
 		void loadModel(std::string const& path);
@@ -36,6 +40,6 @@ class Model {
 		Mesh processMesh(aiMesh* mesh, const aiScene* scene);
 
 		std::vector<Texture> loadMaterialTextures(aiMaterial* mat, aiTextureType type, std::string typeName);
-		unsigned int textureFromFile(const char* path, const std::string& directory, bool gamma = false);
+		unsigned int textureFromFile(const char* path, const std::string &directory, bool gamma = false);
 };
 

@@ -21,7 +21,8 @@ class StateMachine;
 #include "GLWindow.h"
 #include "Player.h"
 
-#include "Chest.h"
+#include "Terrain.h"
+#include "Wall.h"
 
 
 class PlayingState : public State {
@@ -44,6 +45,5 @@ class PlayingState : public State {
 		GLfloat deltaTime = 0, lastFrame = 0;
 
 		std::unique_ptr<Player> player = nullptr;
-		std::unique_ptr<Chest> chest = nullptr;
-
+		std::unique_ptr<Terrain> terrain = nullptr;
 };

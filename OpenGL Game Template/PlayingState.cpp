@@ -1,14 +1,15 @@
 #include "PlayingState.h"
 
-PlayingState::PlayingState(StateMachine& machine, GLWindow& window, bool replace) 
+PlayingState::PlayingState(StateMachine& machine, GLWindow& window, bool replace)
 	: State(machine, window, replace), window(window) {
 
 	// Player
-	player = std::make_unique<Player>(window, glm::vec3(0, 0, 0), getProjectionMatrix());
+	player = std::make_unique<Player>(window, glm::vec3(0, 2, 0), getProjectionMatrix());
 
-	// Chest
-	chest = std::make_unique<Chest>(window, "res/models/chest.obj");
-	chest->setPosition(glm::vec3(0, 0, 0));
+	// Terrain
+	terrain = std::make_unique<Terrain>(window, TERRAIN_MODEL_LOCATION);
+	terrain->setPosition(glm::vec3(0, 0, 0));
+	terrain->setScale(glm::vec3(5, 5, 5));
 }
 
 void PlayingState::keyboardInputs(sf::Keyboard::Key& key, bool isPressed) {
@@ -19,7 +20,7 @@ void PlayingState::updateEvents() {
 	while (window.getWindow().pollEvent(sfEvent)) {
 		auto keyCode = sfEvent.key.code;
 
-		switch (sfEvent.type) {
+		switch (sfEvent.type) { 
 			case sf::Event::Closed:
 				machine.quit();
 				break;  
@@ -45,15 +46,13 @@ void PlayingState::update() {
 	// Player
 	player->update((GLfloat)deltaTime);
 
-	// Chest
-	chest->update();
 }
 
 void PlayingState::render() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	glClearColor(0.f, 0.f, 0.f, 1.f);
+	glClearColor(0.5f, 1.f, 1.f, 1.f);
 
-	chest->render(player->getViewMatrix(), getProjectionMatrix());
+	terrain->render(player->getViewMatrix(), getProjectionMatrix());
 
 	window.swapBuffers();
 }

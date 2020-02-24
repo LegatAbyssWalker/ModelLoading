@@ -11,7 +11,7 @@ void GLWindow::initWindow() {
 	std::string title;
 	sf::VideoMode windowBounds;
 	sf::ContextSettings contextSettings;
-	unsigned int framerateLimit;
+	unsigned int framerateLimit = 120;
 
 	std::ifstream in(WINDOW_INI_CONFIG);
 	if (in.is_open()) {

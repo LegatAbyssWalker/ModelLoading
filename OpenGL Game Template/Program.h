@@ -1,5 +1,4 @@
-#ifndef PROGRAM_H
-#define PROGRAM_H
+#pragma once
 
 #include "GL/glew.h"
 #include "glm/glm.hpp"
@@ -17,7 +16,7 @@ class Program {
 		GLuint programID;
 
 		Program() = default;
-		Program(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath);
+		Program(const std::string& vertexPath, const std::string& fragmentPath, const std::string& geometryPath = "");
 		~Program();
 
 		void useProgram();
@@ -42,5 +41,3 @@ class Program {
 	private:
 		void checkCompileErrors(GLuint shaderType, std::string type);
 };
-
-#endif

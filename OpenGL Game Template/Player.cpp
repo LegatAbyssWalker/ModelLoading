@@ -7,6 +7,13 @@ Player::Player(GLWindow& window, glm::vec3 position, glm::mat4 projection)
 }
 
 void Player::keyboardUpdate(sf::Keyboard::Key& key, bool isPressed, GLfloat deltaTime) {
+/*	if      (key == sf::Keyboard::W)      { movement.up     = isPressed; }
+	else if (key == sf::Keyboard::A)      { movement.left   = isPressed; }
+	else if (key == sf::Keyboard::S)      { movement.down   = isPressed; }
+	else if (key == sf::Keyboard::D)      { movement.right  = isPressed; }
+	else if (key == sf::Keyboard::LShift) { movement.lShift = isPressed; }
+	else if (key == sf::Keyboard::Space)  { movement.space  = isPressed; }*/
+
 	// Camera event updates
 	camera.processKeyboard(key, isPressed, deltaTime);
 }

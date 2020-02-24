@@ -9,9 +9,19 @@ Camera::Camera(glm::vec3 position, glm::vec3 up, GLfloat yaw, GLfloat pitch, GLf
 	updateCameraVectors();
 }
 
-void Camera::processKeyboard(sf::Keyboard::Key& key, bool isPressed, GLfloat deltaTime) {
+void Camera::processKeyboard(/*Movement& movement, GLfloat deltaTime*/ sf::Keyboard::Key& key, bool isPressed, GLfloat deltaTime) {
 	GLfloat velocity = movementSpeed * deltaTime;
-	
+	/*
+	// WASD
+	if      (movement.up)    { position += front * velocity; }
+	else if (movement.left)  { position -= right * velocity; }
+	else if (movement.down)  { position -= front * velocity; }
+	else if (movement.right) { position += right * velocity; }
+
+	// SHIFT/SPACE
+	else if (movement.lShift) { position -= up * velocity; }
+	else if (movement.space)  { position += up * velocity; }*/
+
 	// WASD
 	if (key == sf::Keyboard::W) { position += front * velocity; }
 	if (key == sf::Keyboard::A) { position -= right * velocity; }
